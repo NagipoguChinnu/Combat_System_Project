@@ -1,0 +1,5 @@
+package com.combatsystem.www.dto;
+
+public class IOTOperatorDto {
+
+}

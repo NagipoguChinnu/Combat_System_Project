@@ -1,0 +1,28 @@
+package com.combatsystem.www.repository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.combatsystem.www.model.AdminEncryptedMessage;
+
+import jakarta.transaction.Transactional;
+
+@Repository
+public interface AdminEncryptedMessageRepo extends JpaRepository<AdminEncryptedMessage, Long>{
+
+	List<AdminEncryptedMessage> findByReceiverEmail(String email);
+	
+	@Modifying
+    @Transactional
+    @Query("UPDATE AdminEncryptedMessage a SET a.status = :status WHERE a.timeStamp >= :start AND a.timeStamp < :end")
+    int updateStatusByTimestampRange(@Param("start") LocalDateTime start,
+                                     @Param("end") LocalDateTime end,
+                                     @Param("status") String status);
+
+}

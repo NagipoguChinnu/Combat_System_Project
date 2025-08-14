@@ -1,0 +1,115 @@
+package com.combatsystem.www.model;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Soldier {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long Id;
+	@Column
+	private String userName;
+	@Column
+	private String DeviceType;
+	@Column
+	private double latitude;
+	@Column
+	private double longitude;
+	@Column(unique=true)
+	private String email;
+	@Column
+	private String password;
+	@Column
+	private String otp;
+	@Column
+	private boolean otpVerified;
+	@Column
+	private String status = "PENDING";
+	@Column(name="role")
+	private String role="SOLDIER";
+	
+	@OneToMany(mappedBy = "soldierOperator")
+	private List<SoldierEncryptedMessage> messages;
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getDeviceType() {
+		return DeviceType;
+	}
+	public void setDeviceType(String deviceType) {
+		DeviceType = deviceType;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getOtp() {
+		return otp;
+	}
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+	public boolean isOtpVerified() {
+		return otpVerified;
+	}
+	public void setOtpVerified(boolean otpVerified) {
+		this.otpVerified = otpVerified;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public List<SoldierEncryptedMessage> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<SoldierEncryptedMessage> messages) {
+		this.messages = messages;
+	}
+}

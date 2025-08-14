@@ -1,0 +1,94 @@
+package com.combatsystem.www.model;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
+@Entity
+public class AdminEncryptedMessage {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String receiverEmail;
+	@Lob
+	private String block1;
+	@Lob
+	private String block2;
+	@Lob
+	private String block3;
+	
+	private LocalDateTime timeStamp;
+	
+	private String status="OK";
+	
+	public AdminEncryptedMessage() {}
+	
+	public AdminEncryptedMessage(String receiverEmail,String block1,String block2,String block3) {
+		this.receiverEmail=receiverEmail;
+		this.block1=block1;
+		this.block2=block2;
+		this.block3=block3;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getReceiverEmail() {
+		return receiverEmail;
+	}
+
+	public void setReceiverEmail(String receiverEmail) {
+		this.receiverEmail = receiverEmail;
+	}
+
+	public String getBlock1() {
+		return block1;
+	}
+
+	public void setBlock1(String block1) {
+		this.block1 = block1;
+	}
+
+	public String getBlock2() {
+		return block2;
+	}
+
+	public void setBlock2(String block2) {
+		this.block2 = block2;
+	}
+
+	public String getBlock3() {
+		return block3;
+	}
+
+	public void setBlock3(String block3) {
+		this.block3 = block3;
+	}
+
+	public LocalDateTime getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(LocalDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+}

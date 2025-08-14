@@ -1,0 +1,17 @@
+package com.combatsystem.www.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.combatsystem.www.model.Soldier;
+
+public interface SoldierRepo extends JpaRepository<Soldier, Long> {
+
+	@Query("SELECT DISTINCT u FROM soldier u WHERE u.email = :email")
+	Soldier findByEmail(@Param("email") String email);
+	
+	List<Soldier> findByStatus(String status);
+}

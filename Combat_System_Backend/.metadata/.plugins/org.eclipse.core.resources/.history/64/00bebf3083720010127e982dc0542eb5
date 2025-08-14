@@ -1,0 +1,14 @@
+package com.combatsystem.www.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.combatsystem.www.model.UavEncryptedMessage;
+
+@Repository
+public interface UavEncryptedMessageRepository extends JpaRepository<UavEncryptedMessage, Long>{
+
+	Optional<UavEncryptedMessage> findById(Long userId);
+}

@@ -1,0 +1,14 @@
+package com.combatsystem.www.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.combatsystem.www.model.AdminEncryptedMessage;
+
+@Repository
+public interface AdminEncryptedMessageRepo extends JpaRepository<AdminEncryptedMessage, Long>{
+
+	List<AdminEncryptedMessage> findByReceiverEmail(String email);
+}
