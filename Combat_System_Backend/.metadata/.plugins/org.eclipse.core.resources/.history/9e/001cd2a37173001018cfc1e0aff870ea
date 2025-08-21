@@ -1,5 +1,0 @@
-package com.combatsystem.www.repository;
-
-public interface AdminEncryptedMessageRepo {
-
-}
